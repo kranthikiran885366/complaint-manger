@@ -1,0 +1,345 @@
+/* Safety Department Specific Styles */
+
+.safety-dashboard {
+    --safety-blue: #1e40af;
+    --safety-red: #dc2626;
+    --safety-green: #059669;
+    --safety-yellow: #d97706;
+    --safety-light-blue: #dbeafe;
+    --safety-light-red: #fee2e2;
+    --safety-light-green: #d1fae5;
+    --safety-light-yellow: #fef3c7;
+}
+
+/* Emergency Response Cards */
+.emergency-card {
+    background: linear-gradient(135deg, var(--safety-light-red) 0%, var(--safety-light-yellow) 100%);
+    border: 2px solid var(--safety-red);
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 15px;
+    position: relative;
+    overflow: hidden;
+}
+
+.emergency-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, transparent, var(--safety-red), transparent);
+    animation: emergency-flash 2s linear infinite;
+}
+
+@keyframes emergency-flash {
+    0% { left: -100%; }
+    100% { left: 100%; }
+}
+
+/* Police Station Cards */
+.police-station-card {
+    background: linear-gradient(135deg, var(--safety-light-blue), #f0f9ff);
+    border-left: 4px solid var(--safety-blue);
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 15px;
+    transition: transform 0.2s ease;
+}
+
+.police-station-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(30, 64, 175, 0.15);
+}
+
+/* Patrol Status */
+.patrol-status {
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.patrol-status::before {
+    content: '';
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+}
+
+.patrol-available {
+    background: var(--safety-light-green);
+    color: var(--safety-green);
+}
+
+.patrol-available::before {
+    background: var(--safety-green);
+}
+
+.patrol-on-duty {
+    background: var(--safety-light-blue);
+    color: var(--safety-blue);
+}
+
+.patrol-on-duty::before {
+    background: var(--safety-blue);
+    animation: pulse 1.5s infinite;
+}
+
+.patrol-responding {
+    background: var(--safety-light-red);
+    color: var(--safety-red);
+}
+
+.patrol-responding::before {
+    background: var(--safety-red);
+    animation: blink 1s infinite;
+}
+
+/* Fire Department */
+.fire-station-card {
+    background: linear-gradient(135deg, var(--safety-light-red), #fef2f2);
+    border-left: 4px solid var(--safety-red);
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 15px;
+}
+
+.fire-truck-status {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 15px;
+    background: white;
+    border-radius: 8px;
+    margin: 10px 0;
+}
+
+.truck-indicator {
+    width: 40px;
+    height: 24px;
+    background: var(--safety-red);
+    border-radius: 4px;
+    position: relative;
+}
+
+.truck-indicator.available {
+    background: var(--safety-green);
+}
+
+.truck-indicator.responding {
+    background: var(--safety-yellow);
+    animation: truck-flash 1s infinite;
+}
+
+@keyframes truck-flash {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0.5; }
+}
+
+/* Disaster Management */
+.disaster-alert-card {
+    background: linear-gradient(135deg, #fef2f2, #fef3c7);
+    border: 2px solid var(--safety-red);
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 15px;
+    position: relative;
+}
+
+.alert-level {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.alert-low {
+    background: var(--safety-light-green);
+    color: var(--safety-green);
+}
+
+.alert-medium {
+    background: var(--safety-light-yellow);
+    color: var(--safety-yellow);
+}
+
+.alert-high {
+    background: var(--safety-light-red);
+    color: var(--safety-red);
+    animation: pulse 2s infinite;
+}
+
+/* Crime Statistics */
+.crime-stat-card {
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    border: 1px solid #e5e7eb;
+    margin-bottom: 15px;
+    transition: transform 0.2s ease;
+}
+
+.crime-stat-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+.crime-trend {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 10px;
+}
+
+.trend-arrow {
+    font-size: 14px;
+}
+
+.trend-up { color: var(--safety-red); }
+.trend-down { color: var(--safety-green); }
+.trend-stable { color: var(--safety-yellow); }
+
+/* Traffic Management */
+.traffic-violation-card {
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    border-left: 4px solid var(--safety-yellow);
+    margin-bottom: 15px;
+}
+
+.violation-severity {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    margin-right: 8px;
+}
+
+.severity-minor { background: var(--safety-green); }
+.severity-major { background: var(--safety-yellow); }
+.severity-critical { background: var(--safety-red); }
+
+/* Emergency Contact Panel */
+.emergency-contacts {
+    background: linear-gradient(135deg, var(--safety-light-red), var(--safety-light-yellow));
+    border-radius: 12px;
+    padding: 20px;
+    margin: 20px 0;
+}
+
+.emergency-number {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 15px;
+    background: white;
+    border-radius: 8px;
+    margin: 10px 0;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.emergency-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    color: white;
+}
+
+.police-icon { background: var(--safety-blue); }
+.fire-icon { background: var(--safety-red); }
+.medical-icon { background: var(--safety-green); }
+
+/* Response Time Tracker */
+.response-time-card {
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    border: 1px solid #e5e7eb;
+}
+
+.response-meter {
+    background: #f3f4f6;
+    height: 20px;
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 15px 0;
+    position: relative;
+}
+
+.response-fill {
+    height: 100%;
+    border-radius: 10px;
+    transition: width 0.5s ease;
+}
+
+.response-excellent { background: var(--safety-green); }
+.response-good { background: var(--safety-yellow); }
+.response-poor { background: var(--safety-red); }
+
+/* Security Camera Grid */
+.camera-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+    margin: 20px 0;
+}
+
+.camera-feed {
+    background: #1f2937;
+    border-radius: 8px;
+    padding: 15px;
+    text-align: center;
+    color: white;
+    position: relative;
+}
+
+.camera-status {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+}
+
+.camera-online { background: var(--safety-green); }
+.camera-offline { background: var(--safety-red); }
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .emergency-contacts {
+        padding: 15px;
+    }
+    
+    .emergency-number {
+        padding: 12px;
+        font-size: 16px;
+    }
+    
+    .camera-grid {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 10px;
+    }
+    
+    .fire-truck-status {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+    }
+}

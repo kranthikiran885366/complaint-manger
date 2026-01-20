@@ -1,0 +1,15 @@
+# Require reviews from code owners for protected branches
+# Replace with your GitHub org/team or usernames
+* @your-org/maintainers @repo-admin
+
+# Examples of scoping ownership
+src/ @frontend-team
+src/pages/ @web-team
+src/components/ @ui-team
+
+# Docs owned by docs team
+docs/ @docs-team
+*.md @docs-team
+
+# Default fallback
+# * @repo-admin
