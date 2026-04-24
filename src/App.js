@@ -77,6 +77,7 @@ import DepartmentIndex from './pages/Departments/DepartmentIndex';
 
 import { MOCK_USERS } from './utils/constants';
 import './styles/global.css';
+import './styles/government-professional.css';
 
 const App = ({ initialPage = 'landing', syncRoute }) => {
     const [currentPage, setCurrentPage] = useState(initialPage);

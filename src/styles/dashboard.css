@@ -1,26 +1,13 @@
-/* Enhanced Dashboard Styles - Keeping Original Color Palette */
+/* Professional Government Dashboard Styles */
 
 .dashboard-container {
     flex: 1;
     padding: 24px;
-    background: linear-gradient(135deg, var(--light-grey) 0%, #f8fafc 100%);
+    background: #f9fafb;
     margin-left: 250px;
     min-height: calc(100vh - 60px);
     position: relative;
     overflow-x: hidden;
-}
-
-.dashboard-container::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: radial-gradient(circle at 20% 80%, rgba(0,82,204,0.03) 0%, transparent 50%),
-                radial-gradient(circle at 80% 20%, rgba(16,185,129,0.03) 0%, transparent 50%);
-    pointer-events: none;
-    z-index: 0;
 }
 
 .dashboard-container > * {
@@ -29,24 +16,19 @@
 }
 
 .dashboard-header {
-    margin-bottom: 40px;
-    animation: slideDown 0.6s ease;
+    margin-bottom: 32px;
 }
 
 .dashboard-header h1 {
-    font-size: 36px;
-    color: var(--text-primary);
-    margin-bottom: 12px;
-    font-weight: 800;
-    background: linear-gradient(135deg, var(--text-primary) 0%, var(--primary-blue) 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    font-size: 28px;
+    color: #111827;
+    margin-bottom: 8px;
+    font-weight: 700;
 }
 
 .dashboard-header p {
-    color: var(--text-secondary);
-    font-size: 18px;
+    color: #6b7280;
+    font-size: 15px;
     font-weight: 500;
     max-width: 600px;
 }
