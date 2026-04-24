@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { validateEmail } from '../../utils/helpers';
-import '../../styles/register-modern.css';
+import '../../styles/auth-professional.css';
 
 const Login = ({ onNavigate, onLoginSuccess }) => {
     const [formData, setFormData] = useState({ email: '', password: '' });
@@ -60,146 +60,106 @@ const Login = ({ onNavigate, onLoginSuccess }) => {
     };
 
     return (
-        <div className="register-container-modern">
-            {/* Background Illustrations */}
-            <div className="register-background">
-                <div className="bg-illustration left">
-                    <div className="people-illustration"></div>
-                </div>
-                <div className="bg-illustration right">
-                    <div className="dept-icon water">
-                        <i className="fas fa-tint"></i>
-                        <span>Water Supply</span>
+        <div className="auth-container" style={{backgroundImage: 'url(/images/form-bg.jpg)'}}>
+            <div className="auth-overlay"></div>
+            <div className="auth-content">
+                <div className="auth-card">
+                    <div className="auth-logo">
+                        <i className="fas fa-shield-alt"></i>
+                        <h2>SCMS</h2>
                     </div>
-                    <div className="dept-icon electricity">
-                        <i className="fas fa-bolt"></i>
-                        <span>Electricity</span>
-                    </div>
-                    <div className="dept-icon transport">
-                        <i className="fas fa-bus"></i>
-                        <span>Transport</span>
-                    </div>
-                    <div className="dept-icon health">
-                        <i className="fas fa-heartbeat"></i>
-                        <span>Health</span>
-                    </div>
-                </div>
-            </div>
 
-            <div className="register-card-centered">
-                <div className="register-header">
-                    <h1>Smart Complaint Management System</h1>
-                    <p>User Login</p>
-                </div>
+                    <h1 className="auth-title">Welcome Back</h1>
+                    <p className="auth-subtitle">Sign in to your account to continue</p>
 
-                <form className="register-form-simple" onSubmit={handleSubmit}>
                     {successMessage && (
-                        <div className="success-alert">
+                        <div className="alert alert-success">
                             <i className="fas fa-check-circle"></i>
                             {successMessage}
                         </div>
                     )}
 
-                    <div className="form-field">
-                        <div className="input-icon-wrapper">
-                            <i className="fas fa-envelope"></i>
-                            <input
-                                type="email"
-                                name="email"
-                                placeholder="Email Address"
-                                value={formData.email}
-                                onChange={handleChange}
-                                className={errors.email ? 'error' : ''}
-                            />
+                    <form className="auth-form" onSubmit={handleSubmit}>
+                        <div className="form-group">
+                            <label>Email Address</label>
+                            <div className="input-wrapper">
+                                <i className="fas fa-envelope"></i>
+                                <input
+                                    type="email"
+                                    name="email"
+                                    placeholder="your@email.com"
+                                    value={formData.email}
+                                    onChange={handleChange}
+                                    className={errors.email ? 'form-error-input' : ''}
+                                />
+                            </div>
+                            {errors.email && <span className="form-error">{errors.email}</span>}
                         </div>
-                        {errors.email && <span className="error-text">{errors.email}</span>}
-                    </div>
 
-                    <div className="form-field">
-                        <div className="input-icon-wrapper">
-                            <i className="fas fa-lock"></i>
-                            <input
-                                type={showPassword ? 'text' : 'password'}
-                                name="password"
-                                placeholder="Password"
-                                value={formData.password}
-                                onChange={handleChange}
-                                className={errors.password ? 'error' : ''}
-                            />
-                            <button
-                                type="button"
-                                className="toggle-password"
-                                onClick={() => setShowPassword(!showPassword)}
-                                style={{
-                                    position: 'absolute',
-                                    right: '16px',
-                                    background: 'none',
-                                    border: 'none',
-                                    cursor: 'pointer',
-                                    color: '#9ca3af'
-                                }}
-                            >
-                                <i className={`fas ${showPassword ? 'fa-eye-slash' : 'fa-eye'}`}></i>
+                        <div className="form-group">
+                            <label>Password</label>
+                            <div className="input-wrapper">
+                                <i className="fas fa-lock"></i>
+                                <input
+                                    type={showPassword ? 'text' : 'password'}
+                                    name="password"
+                                    placeholder="••••••••"
+                                    value={formData.password}
+                                    onChange={handleChange}
+                                    className={errors.password ? 'form-error-input' : ''}
+                                />
+                                <button
+                                    type="button"
+                                    className="password-toggle"
+                                    onClick={() => setShowPassword(!showPassword)}
+                                >
+                                    <i className={`fas fa-eye${showPassword ? '-slash' : ''}`}></i>
+                                </button>
+                            </div>
+                            {errors.password && <span className="form-error">{errors.password}</span>}
+                        </div>
+
+                        <div className="form-footer">
+                            <label className="checkbox">
+                                <input type="checkbox" name="remember" />
+                                <span>Remember me</span>
+                            </label>
+                            <button type="button" className="forgot-link" onClick={() => onNavigate('forgot-password')}>
+                                Forgot password?
                             </button>
                         </div>
-                        {errors.password && <span className="error-text">{errors.password}</span>}
+
+                        <button type="submit" className="btn btn-primary btn-large" disabled={isLoading} style={{width: '100%'}}>
+                            {isLoading ? 'Signing in...' : 'Sign In'}
+                        </button>
+                    </form>
+
+                    <div className="auth-divider">or</div>
+
+                    <div className="auth-footer">
+                        <p>Don&apos;t have an account? <button type="button" className="auth-link" onClick={() => onNavigate('register')}>Create one</button></p>
                     </div>
 
-                    <div className="form-field checkbox-field">
-                        <label className="checkbox-container">
-                            <input
-                                type="checkbox"
-                                name="rememberMe"
-                                defaultChecked
-                            />
-                            <span className="checkmark-custom"></span>
-                            <span className="checkbox-label">Keep me signed in</span>
-                        </label>
+                    <div className="demo-credentials">
+                        <p>Demo Credentials:</p>
+                        <small>Citizen: citizen@example.com</small>
+                        <small>Officer: officer@example.com</small>
+                        <small>Admin: admin@example.com</small>
                     </div>
+                </div>
 
-                    <button type="submit" className="register-button" disabled={isLoading}>
-                        {isLoading ? 'Signing in...' : 'Sign In'}
-                    </button>
-
-                    <div className="register-footer">
-                        <p>
-                            Don't have an account?{' '}
-                            <button type="button" className="login-link" onClick={() => onNavigate('register')}>
-                                Register
-                            </button>
-                        </p>
-                        <p>
-                            <button type="button" className="login-link" onClick={() => onNavigate('forgot-password')}>
-                                Forgot Password?
-                            </button>
-                        </p>
+                <div className="auth-side">
+                    <div className="auth-info">
+                        <h3>Smart Complaint System</h3>
+                        <p>Manage complaints efficiently with our government-approved platform</p>
+                        <ul className="auth-features">
+                            <li><i className="fas fa-check"></i> Real-time tracking</li>
+                            <li><i className="fas fa-check"></i> Secure communication</li>
+                            <li><i className="fas fa-check"></i> Multi-department support</li>
+                            <li><i className="fas fa-check"></i> 24/7 accessibility</li>
+                        </ul>
                     </div>
-
-                    {/* Demo Credentials */}
-                    <div style={{
-                        marginTop: '20px',
-                        padding: '15px',
-                        background: 'rgba(255, 255, 255, 0.1)',
-                        borderRadius: '8px',
-                        border: '1px solid rgba(255, 255, 255, 0.2)'
-                    }}>
-                        <h4 style={{ color: 'white', fontSize: '14px', marginBottom: '10px' }}>Demo Credentials:</h4>
-                        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8px', fontSize: '12px' }}>
-                            <div style={{ color: 'rgba(255, 255, 255, 0.9)' }}>
-                                <strong>Citizen:</strong> citizen@email.com
-                            </div>
-                            <div style={{ color: 'rgba(255, 255, 255, 0.9)' }}>
-                                <strong>Officer:</strong> officer@email.com
-                            </div>
-                            <div style={{ color: 'rgba(255, 255, 255, 0.9)' }}>
-                                <strong>Admin:</strong> admin@email.com
-                            </div>
-                            <div style={{ color: 'rgba(255, 255, 255, 0.9)' }}>
-                                <strong>Password:</strong> password123
-                            </div>
-                        </div>
-                    </div>
-                </form>
+                </div>
             </div>
         </div>
     );

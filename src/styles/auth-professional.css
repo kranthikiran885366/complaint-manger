@@ -1,0 +1,415 @@
+/* ========================================
+   PROFESSIONAL AUTHENTICATION STYLES
+   ======================================== */
+
+.auth-container {
+    min-height: 100vh;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--spacing-lg);
+    position: relative;
+}
+
+.auth-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(30, 64, 175, 0.85) 0%, rgba(6, 182, 212, 0.75) 100%);
+    z-index: 1;
+}
+
+.auth-content {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-3xl);
+    max-width: 1100px;
+    width: 100%;
+    align-items: center;
+}
+
+.auth-card {
+    background-color: var(--white);
+    padding: var(--spacing-3xl);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-2xl);
+}
+
+.auth-card.register-card {
+    padding: var(--spacing-2xl);
+}
+
+.auth-logo {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-2xl);
+}
+
+.auth-logo i {
+    font-size: 40px;
+    color: var(--primary-blue);
+}
+
+.auth-logo h2 {
+    font-size: 28px;
+    color: var(--gray-900);
+    margin: 0;
+}
+
+.auth-title {
+    font-size: 28px;
+    color: var(--gray-900);
+    margin-bottom: var(--spacing-sm);
+}
+
+.auth-subtitle {
+    color: var(--gray-600);
+    font-size: 14px;
+    margin-bottom: var(--spacing-xl);
+}
+
+/* ========================================
+   FORM STYLES
+   ======================================== */
+
+.auth-form {
+    margin-bottom: var(--spacing-xl);
+}
+
+.form-group {
+    margin-bottom: var(--spacing-lg);
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-lg);
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: var(--spacing-sm);
+    font-weight: 600;
+    color: var(--gray-700);
+    font-size: 13px;
+}
+
+.input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.input-wrapper i {
+    position: absolute;
+    left: var(--spacing-md);
+    color: var(--gray-400);
+    font-size: 16px;
+    pointer-events: none;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: var(--spacing-sm) var(--spacing-md) var(--spacing-sm) var(--spacing-xl);
+    border: 1px solid var(--gray-300);
+    border-radius: var(--radius-md);
+    font-size: 14px;
+    background-color: var(--white);
+    transition: all 0.2s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: var(--primary-blue);
+    box-shadow: 0 0 0 3px rgba(30, 64, 175, 0.1);
+}
+
+.form-group input.form-error-input,
+.form-group select.form-error-input {
+    border-color: var(--error);
+}
+
+.form-group input.form-error-input:focus,
+.form-group select.form-error-input:focus {
+    box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+}
+
+.form-error {
+    display: block;
+    color: var(--error);
+    font-size: 12px;
+    margin-top: 4px;
+}
+
+.password-toggle {
+    position: absolute;
+    right: var(--spacing-md);
+    background: none;
+    border: none;
+    color: var(--gray-500);
+    cursor: pointer;
+    font-size: 16px;
+    padding: var(--spacing-sm);
+    transition: color 0.2s ease;
+}
+
+.password-toggle:hover {
+    color: var(--primary-blue);
+}
+
+/* ========================================
+   CHECKBOX & FORM FOOTER
+   ======================================== */
+
+.checkbox {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-lg);
+    cursor: pointer;
+    user-select: none;
+}
+
+.checkbox input[type="checkbox"] {
+    width: auto;
+    cursor: pointer;
+}
+
+.checkbox span {
+    font-size: 13px;
+    color: var(--gray-600);
+}
+
+.checkbox a {
+    color: var(--primary-blue);
+}
+
+.form-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: var(--spacing-lg);
+}
+
+.forgot-link {
+    background: none;
+    border: none;
+    color: var(--primary-blue);
+    cursor: pointer;
+    font-size: 13px;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.forgot-link:hover {
+    color: #1e3a8a;
+}
+
+/* ========================================
+   DIVIDER & FOOTER
+   ======================================== */
+
+.auth-divider {
+    text-align: center;
+    color: var(--gray-400);
+    font-size: 13px;
+    margin: var(--spacing-xl) 0;
+    position: relative;
+}
+
+.auth-divider::before,
+.auth-divider::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    width: 45%;
+    height: 1px;
+    background-color: var(--gray-300);
+}
+
+.auth-divider::before {
+    left: 0;
+}
+
+.auth-divider::after {
+    right: 0;
+}
+
+.auth-footer {
+    text-align: center;
+    margin-bottom: var(--spacing-lg);
+}
+
+.auth-footer p {
+    font-size: 13px;
+    color: var(--gray-600);
+    margin: 0;
+}
+
+.auth-link {
+    background: none;
+    border: none;
+    color: var(--primary-blue);
+    cursor: pointer;
+    font-weight: 600;
+    transition: color 0.2s ease;
+}
+
+.auth-link:hover {
+    color: #1e3a8a;
+}
+
+/* ========================================
+   DEMO CREDENTIALS
+   ======================================== */
+
+.demo-credentials {
+    background-color: var(--gray-50);
+    border: 1px solid var(--gray-200);
+    padding: var(--spacing-md);
+    border-radius: var(--radius-md);
+    text-align: center;
+}
+
+.demo-credentials p {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--gray-700);
+    margin: 0 0 var(--spacing-sm);
+}
+
+.demo-credentials small {
+    display: block;
+    font-size: 11px;
+    color: var(--gray-600);
+    margin-bottom: 4px;
+}
+
+/* ========================================
+   SIDE PANEL
+   ======================================== */
+
+.auth-side {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.auth-info {
+    color: var(--white);
+}
+
+.auth-info h3 {
+    font-size: 28px;
+    margin-bottom: var(--spacing-md);
+    color: var(--white);
+}
+
+.auth-info p {
+    font-size: 16px;
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: var(--spacing-xl);
+}
+
+.auth-features {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.auth-features li {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-lg);
+    font-size: 15px;
+    color: rgba(255, 255, 255, 0.95);
+}
+
+.auth-features i {
+    color: #10b981;
+    font-weight: 700;
+}
+
+/* ========================================
+   ALERTS
+   ======================================== */
+
+.alert {
+    padding: var(--spacing-md) var(--spacing-lg);
+    border-radius: var(--radius-md);
+    border-left: 4px solid;
+    margin-bottom: var(--spacing-lg);
+    display: flex;
+    align-items: flex-start;
+    gap: var(--spacing-md);
+    font-size: 13px;
+}
+
+.alert-success {
+    background-color: rgba(16, 185, 129, 0.1);
+    border-color: #10b981;
+    color: #047857;
+}
+
+.alert-error {
+    background-color: rgba(239, 68, 68, 0.1);
+    border-color: #ef4444;
+    color: #dc2626;
+}
+
+.alert i {
+    flex-shrink: 0;
+    font-size: 18px;
+}
+
+/* ========================================
+   RESPONSIVE
+   ======================================== */
+
+@media (max-width: 1024px) {
+    .auth-content {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-xl);
+    }
+
+    .auth-side {
+        display: none;
+    }
+
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .auth-container {
+        padding: var(--spacing-md);
+    }
+
+    .auth-card {
+        padding: var(--spacing-xl);
+    }
+
+    .auth-card.register-card {
+        padding: var(--spacing-lg);
+    }
+
+    .auth-title {
+        font-size: 24px;
+    }
+
+    .form-group input,
+    .form-group select {
+        padding: var(--spacing-sm) var(--spacing-md) var(--spacing-sm) var(--spacing-xl);
+    }
+}

@@ -76,6 +76,7 @@ import GenericDepartmentDashboard from './pages/Departments/GenericDepartmentDas
 import DepartmentIndex from './pages/Departments/DepartmentIndex';
 
 import { MOCK_USERS } from './utils/constants';
+import './styles/design-system.css';
 import './styles/global.css';
 import './styles/government-professional.css';
 

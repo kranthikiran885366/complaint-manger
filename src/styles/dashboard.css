@@ -1,9 +1,10 @@
 /* Professional Government Dashboard Styles */
+/* Uses design-system.css variables and components */
 
 .dashboard-container {
     flex: 1;
-    padding: 24px;
-    background: #f9fafb;
+    padding: var(--spacing-xl);
+    background: var(--gray-50);
     margin-left: 250px;
     min-height: calc(100vh - 60px);
     position: relative;

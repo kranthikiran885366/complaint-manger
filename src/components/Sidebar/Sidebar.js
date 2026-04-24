@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { DEPARTMENTS, DEPARTMENT_CATEGORIES } from '../../utils/constants';
-import '../../styles/sidebar.css';
+import '../../styles/sidebar-professional.css';
 
 const Sidebar = ({ user, currentPage, onNavigate }) => {
     const [isMobileOpen, setIsMobileOpen] = useState(false);

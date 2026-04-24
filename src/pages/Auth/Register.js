@@ -2,20 +2,18 @@
 
 import React, { useState } from 'react';
 import { validateEmail, validatePhone } from '../../utils/helpers';
-import '../../styles/register-modern.css';
+import '../../styles/auth-professional.css';
 
 const Register = ({ onNavigate, onLoginSuccess }) => {
     const [formData, setFormData] = useState({
         fullName: '',
         email: '',
         mobile: '',
-        role: '',
-        departmentOfficer: '',
-        department: '',
+        role: 'citizen',
         address: '',
         password: '',
         confirmPassword: '',
-        verifyOTP: false
+        terms: false
     });
     const [errors, setErrors] = useState({});
     const [isLoading, setIsLoading] = useState(false);
@@ -73,210 +71,180 @@ const Register = ({ onNavigate, onLoginSuccess }) => {
     };
 
     return (
-        <div className="register-container-modern">
-            <div className="register-background">
-                <div className="bg-illustration left">
-                    <div className="people-illustration"></div>
-                </div>
-                <div className="bg-illustration right">
-                    <div className="dept-icon water">
-                        <i className="fas fa-tint"></i>
-                        <span>Water Supply</span>
+        <div className="auth-container register" style={{backgroundImage: 'url(/images/form-bg.jpg)'}}>
+            <div className="auth-overlay"></div>
+            <div className="auth-content">
+                <div className="auth-card register-card">
+                    <div className="auth-logo">
+                        <i className="fas fa-shield-alt"></i>
+                        <h2>SCMS</h2>
                     </div>
-                    <div className="dept-icon electricity">
-                        <i className="fas fa-bolt"></i>
-                        <span>Electricity</span>
-                    </div>
-                    <div className="dept-icon transport">
-                        <i className="fas fa-bus"></i>
-                        <span>Transport</span>
-                    </div>
-                    <div className="dept-icon health">
-                        <i className="fas fa-heartbeat"></i>
-                        <span>Health</span>
-                    </div>
-                </div>
-            </div>
 
-            <div className="register-card-centered">
-                <div className="register-header">
-                    <h1>Smart Complaint Management System</h1>
-                    <p>User Registration</p>
-                </div>
+                    <h1 className="auth-title">Create Account</h1>
+                    <p className="auth-subtitle">Register to file and track complaints</p>
 
-                <form className="register-form-simple" onSubmit={handleSubmit}>
                     {successMessage && (
-                        <div className="success-alert">
+                        <div className="alert alert-success">
                             <i className="fas fa-check-circle"></i>
                             {successMessage}
                         </div>
                     )}
 
-                    <div className="form-field">
-                        <div className="input-icon-wrapper">
-                            <i className="fas fa-user"></i>
-                            <input
-                                type="text"
-                                name="fullName"
-                                placeholder="Full Name"
-                                value={formData.fullName}
-                                onChange={handleChange}
-                                className={errors.fullName ? 'error' : ''}
-                            />
+                    <form className="auth-form" onSubmit={handleSubmit}>
+                        <div className="form-row">
+                            <div className="form-group">
+                                <label>Full Name</label>
+                                <div className="input-wrapper">
+                                    <i className="fas fa-user"></i>
+                                    <input
+                                        type="text"
+                                        name="fullName"
+                                        placeholder="Your full name"
+                                        value={formData.fullName}
+                                        onChange={handleChange}
+                                        className={errors.fullName ? 'form-error-input' : ''}
+                                    />
+                                </div>
+                                {errors.fullName && <span className="form-error">{errors.fullName}</span>}
+                            </div>
+
+                            <div className="form-group">
+                                <label>Role</label>
+                                <div className="input-wrapper">
+                                    <i className="fas fa-user-tag"></i>
+                                    <select
+                                        name="role"
+                                        value={formData.role}
+                                        onChange={handleChange}
+                                        className={errors.role ? 'form-error-input' : ''}
+                                    >
+                                        <option value="citizen">Citizen</option>
+                                        <option value="officer">Officer</option>
+                                        <option value="admin">Admin</option>
+                                    </select>
+                                </div>
+                            </div>
                         </div>
-                        {errors.fullName && <span className="error-text">{errors.fullName}</span>}
-                    </div>
 
-                    <div className="form-field">
-                        <div className="input-icon-wrapper">
-                            <i className="fas fa-envelope"></i>
-                            <input
-                                type="email"
-                                name="email"
-                                placeholder="Email Address"
-                                value={formData.email}
-                                onChange={handleChange}
-                                className={errors.email ? 'error' : ''}
-                            />
+                        <div className="form-row">
+                            <div className="form-group">
+                                <label>Email Address</label>
+                                <div className="input-wrapper">
+                                    <i className="fas fa-envelope"></i>
+                                    <input
+                                        type="email"
+                                        name="email"
+                                        placeholder="your@email.com"
+                                        value={formData.email}
+                                        onChange={handleChange}
+                                        className={errors.email ? 'form-error-input' : ''}
+                                    />
+                                </div>
+                                {errors.email && <span className="form-error">{errors.email}</span>}
+                            </div>
+
+                            <div className="form-group">
+                                <label>Mobile Number</label>
+                                <div className="input-wrapper">
+                                    <i className="fas fa-phone"></i>
+                                    <input
+                                        type="tel"
+                                        name="mobile"
+                                        placeholder="Your mobile number"
+                                        value={formData.mobile}
+                                        onChange={handleChange}
+                                        className={errors.mobile ? 'form-error-input' : ''}
+                                    />
+                                </div>
+                                {errors.mobile && <span className="form-error">{errors.mobile}</span>}
+                            </div>
                         </div>
-                        {errors.email && <span className="error-text">{errors.email}</span>}
-                    </div>
 
-                    <div className="form-field">
-                        <div className="input-icon-wrapper">
-                            <i className="fas fa-mobile-alt"></i>
-                            <input
-                                type="tel"
-                                name="mobile"
-                                placeholder="Mobile Number"
-                                value={formData.mobile}
-                                onChange={handleChange}
-                                className={errors.mobile ? 'error' : ''}
-                            />
+                        <div className="form-group">
+                            <label>Address</label>
+                            <div className="input-wrapper">
+                                <i className="fas fa-map-marker"></i>
+                                <input
+                                    type="text"
+                                    name="address"
+                                    placeholder="Your residential address"
+                                    value={formData.address}
+                                    onChange={handleChange}
+                                    className={errors.address ? 'form-error-input' : ''}
+                                />
+                            </div>
+                            {errors.address && <span className="form-error">{errors.address}</span>}
                         </div>
-                        {errors.mobile && <span className="error-text">{errors.mobile}</span>}
-                    </div>
 
-                    <div className="form-field">
-                        <div className="select-wrapper">
-                            <select
-                                name="role"
-                                value={formData.role}
-                                onChange={handleChange}
-                                className={errors.role ? 'error' : ''}
-                            >
-                                <option value="">Select Role</option>
-                                <option value="citizen">Citizen</option>
-                                <option value="officer">Officer</option>
-                                <option value="admin">Admin</option>
-                            </select>
+                        <div className="form-row">
+                            <div className="form-group">
+                                <label>Password</label>
+                                <div className="input-wrapper">
+                                    <i className="fas fa-lock"></i>
+                                    <input
+                                        type="password"
+                                        name="password"
+                                        placeholder="••••••••"
+                                        value={formData.password}
+                                        onChange={handleChange}
+                                        className={errors.password ? 'form-error-input' : ''}
+                                    />
+                                </div>
+                                {errors.password && <span className="form-error">{errors.password}</span>}
+                            </div>
+
+                            <div className="form-group">
+                                <label>Confirm Password</label>
+                                <div className="input-wrapper">
+                                    <i className="fas fa-lock"></i>
+                                    <input
+                                        type="password"
+                                        name="confirmPassword"
+                                        placeholder="••••••••"
+                                        value={formData.confirmPassword}
+                                        onChange={handleChange}
+                                        className={errors.confirmPassword ? 'form-error-input' : ''}
+                                    />
+                                </div>
+                                {errors.confirmPassword && <span className="form-error">{errors.confirmPassword}</span>}
+                            </div>
                         </div>
-                        {errors.role && <span className="error-text">{errors.role}</span>}
-                    </div>
 
-                    <div className="form-field">
-                        <div className="select-wrapper-icon">
-                            <i className="fas fa-user-tie"></i>
-                            <select
-                                name="departmentOfficer"
-                                value={formData.departmentOfficer}
-                                onChange={handleChange}
-                            >
-                                <option value="">Department Officer</option>
-                                <option value="senior">Senior Officer</option>
-                                <option value="junior">Junior Officer</option>
-                                <option value="manager">Department Manager</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <div className="form-field">
-                        <div className="select-wrapper-icon">
-                            <i className="fas fa-building"></i>
-                            <select
-                                name="department"
-                                value={formData.department}
-                                onChange={handleChange}
-                            >
-                                <option value="">Select Department</option>
-                                <option value="water">Water Supply</option>
-                                <option value="electricity">Electricity</option>
-                                <option value="transport">Transport</option>
-                                <option value="health">Health</option>
-                                <option value="waste">Waste Management</option>
-                                <option value="roads">Road & Infrastructure</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <div className="form-field">
-                        <input
-                            type="text"
-                            name="address"
-                            placeholder="Address"
-                            value={formData.address}
-                            onChange={handleChange}
-                            className={errors.address ? 'error' : ''}
-                        />
-                        {errors.address && <span className="error-text">{errors.address}</span>}
-                    </div>
-
-                    <div className="form-field">
-                        <div className="input-icon-wrapper">
-                            <i className="fas fa-lock"></i>
-                            <input
-                                type="password"
-                                name="password"
-                                placeholder="Password"
-                                value={formData.password}
-                                onChange={handleChange}
-                                className={errors.password ? 'error' : ''}
-                            />
-                        </div>
-                        {errors.password && <span className="error-text">{errors.password}</span>}
-                    </div>
-
-                    <div className="form-field">
-                        <div className="input-icon-wrapper">
-                            <i className="fas fa-lock"></i>
-                            <input
-                                type="password"
-                                name="confirmPassword"
-                                placeholder="Confirm Password"
-                                value={formData.confirmPassword}
-                                onChange={handleChange}
-                                className={errors.confirmPassword ? 'error' : ''}
-                            />
-                        </div>
-                        {errors.confirmPassword && <span className="error-text">{errors.confirmPassword}</span>}
-                    </div>
-
-                    <div className="form-field checkbox-field">
-                        <label className="checkbox-container">
+                        <label className="checkbox">
                             <input
                                 type="checkbox"
-                                name="verifyOTP"
-                                checked={formData.verifyOTP}
+                                name="terms"
+                                checked={formData.terms}
                                 onChange={handleChange}
                             />
-                            <span className="checkmark-custom"></span>
-                            <span className="checkbox-label">Verify with OTP</span>
+                            <span>I agree to the <a href="#terms">Terms of Service</a> and <a href="#privacy">Privacy Policy</a></span>
                         </label>
-                    </div>
+                        {errors.terms && <span className="form-error">{errors.terms}</span>}
 
-                    <button type="submit" className="register-button" disabled={isLoading}>
-                        {isLoading ? 'Registering...' : 'Register'}
-                    </button>
+                        <button type="submit" className="btn btn-primary btn-large" disabled={isLoading} style={{width: '100%'}}>
+                            {isLoading ? 'Creating account...' : 'Create Account'}
+                        </button>
+                    </form>
 
-                    <div className="register-footer">
-                        <p>
-                            Already have an account?{' '}
-                            <button type="button" className="login-link" onClick={() => onNavigate('login')}>
-                                Login
-                            </button>
-                        </p>
+                    <div className="auth-divider">or</div>
+
+                    <div className="auth-footer">
+                        <p>Already have an account? <button type="button" className="auth-link" onClick={() => onNavigate('login')}>Sign in</button></p>
                     </div>
-                </form>
+                </div>
+
+                <div className="auth-side">
+                    <div className="auth-info">
+                        <h3>Quick & Easy Registration</h3>
+                        <p>Join thousands of satisfied users</p>
+                        <ul className="auth-features">
+                            <li><i className="fas fa-check"></i> Takes just 2 minutes</li>
+                            <li><i className="fas fa-check"></i> No hidden charges</li>
+                            <li><i className="fas fa-check"></i> Safe & secure</li>
+                            <li><i className="fas fa-check"></i> Instant activation</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
     );

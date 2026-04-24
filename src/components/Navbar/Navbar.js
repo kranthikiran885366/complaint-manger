@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import '../../styles/navbar.css';
+import '../../styles/navbar-professional.css';
 
 const Navbar = ({ user, onLogout, onNotificationClick, notificationsCount = 0 }) => {
     const [showDropdown, setShowDropdown] = useState(false);
